@@ -1,22 +1,37 @@
 #!/usr/bin/env bash
 
-set -e -E -u -o pipefail -o noglob +o braceexpand || exit 1
+set -e -E -u -o pipefail +o braceexpand || exit 1
 trap 'printf "[ee] failed: %s\n" "${BASH_COMMAND}" >&2' ERR || exit 1
 
-RELEASE=0.7.0.14
-LOGROOT=$HOME/var/log
-RUNROOT=$HOME/var/run
+. platform-env.sh
 
 if [ $# -lt 2 ]; then
     echo "Usage: $0 service id [version]" >&2
-    echo "  version defaults to $RELEASE" >&2
-    echo "  E.g.: $0 modaclouds-services-towerclouds-manager t4c-manager" >&2
+    echo "  version defaults to last available version" >&2
+    echo "  E.g.: $0 modaclouds-services-tower4clouds-manager t4c-manager" >&2
     exit 1
 fi
 
+function get_last_version() {
+    service=$1
+    last=""
+    for pkg in /opt/$service*; do
+        version=${pkg#/opt/$service-}
+        if test "$version" \> "$last" ; then
+            last="$version"
+        fi
+    done
+    if [ -z "$last" ]; then
+        echo "Error getting version for $1" >&2
+        exit 1
+    fi
+    echo "$last"
+}
+
 service=$1
 id=$2
-version=${3:-$RELEASE}
+last_version=$(get_last_version $1)
+version=${3:-$last_version}
 
 if [[ "$service" = *-services-* ]]; then
     bin="/opt/${service}-${version}/bin/${service}--run-service"
@@ -58,7 +73,7 @@ env \
 pid=$!
 echo $pid > $pidfile
 
-echo "Running $id. "
+echo "Running $id [$service-$version] "
 echo "  output is in $outfile"
 echo "  pid is in $pidfile"
 
