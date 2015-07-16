@@ -3,7 +3,7 @@
 set -e -E -u -o pipefail +o braceexpand || exit 1
 trap 'printf "[ee] failed: %s\n" "${BASH_COMMAND}" >&2' ERR || exit 1
 
-. platform-env.sh
+. _platform-env.sh
 
 if [ $# -lt 2 ]; then
     echo "Usage: $0 service id [version]" >&2
@@ -75,5 +75,5 @@ echo $pid > $pidfile
 
 echo "Running $id [$service-$version] "
 echo "  output is in $outfile"
-echo "  pid is in $pidfile"
+echo "  pid=$pid is in $pidfile"
 

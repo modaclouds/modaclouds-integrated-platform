@@ -8,8 +8,8 @@ if [ $# -eq 0 ]; then
     exit 1
 fi
 
-. platform-env.sh
-. platform-functions.sh
+. _platform-env.sh
+. _platform-functions.sh
 
 id=$1
 cmd=${2:-status}
@@ -45,12 +45,15 @@ case $cmd in
         ;;
     status)
         ret=$(status ${id})
+        pidfile=$RUNROOT/$id.pid
         case "$ret" in
         "0")
-            echo "$id is running"
+            pid=$(<"$pidfile")
+            echo "$id is running (pid=$pid)"
             ;;
         "1")
-            echo "$id is not running"
+            pid=$(<"$pidfile")
+            echo "[error] $id is not running (pid=$pid)"
             ;;
         "2")
             echo "$id is stopped"

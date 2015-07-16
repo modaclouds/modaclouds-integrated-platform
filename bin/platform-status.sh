@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-. platform-env.sh
-. platform-functions.sh
+. _platform-env.sh
+. _platform-functions.sh
 
 for pidfile in $HOME/var/run/*.pid; do
     if [ -e $pidfile ]; then

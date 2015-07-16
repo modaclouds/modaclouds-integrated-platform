@@ -1,3 +1,4 @@
+. _platform-env.sh
 
 function start() {
     instance_id=$1
@@ -5,7 +6,7 @@ function start() {
 }
 
 function stop() {
-    pidfile="$HOME/var/run/$1.pid"
+    pidfile="$RUNROOT/$1.pid"
     if [ ! -e "$pidfile" ]; then
         echo "Aborting: $pidfile does not exist." >&2
         return 1
