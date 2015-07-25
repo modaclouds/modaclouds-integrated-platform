@@ -18,6 +18,8 @@ echo "$NODE_PUBLIC_IP\tnode.localdomain node" >> /etc/hosts
 #
 bash <(curl -Ls http://ftp.info.uvt.ro/mos/tools/fixes/opensuse-13.1/add_mos_repo.sh)
 
+zypper refresh
+
 #
 # Some needed packages
 #
@@ -31,7 +33,7 @@ zypper --non-interactive --no-refresh --no-gpg-checks --gpg-auto-import-keys ins
 #
 zypper --non-interactive install mysql mysql-community-server-client mysql-community-server
 /sbin/chkconfig mysql on
-/etc/init.d/mysql start
+service mysql start
 
 #
 # MODAClouds packages
