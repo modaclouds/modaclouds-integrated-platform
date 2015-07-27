@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
+LOGROOT=$HOME/var/log
+RUNROOT=$HOME/var/run
+
+
 set -e -E -u -o pipefail +o braceexpand || exit 1
 trap 'printf "[ee] failed: %s\n" "${BASH_COMMAND}" >&2' ERR || exit 1
-
-. _platform-env.sh
 
 if [ $# -lt 2 ]; then
     echo "Usage: $0 service id [version]" >&2
@@ -11,6 +13,9 @@ if [ $# -lt 2 ]; then
     echo "  E.g.: $0 modaclouds-services-tower4clouds-manager t4c-manager" >&2
     exit 1
 fi
+
+[ ! -e "$LOGROOT" ] && mkdir -p "$LOGROOT"
+[ ! -e "$RUNROOT" ] && mkdir -p "$RUNROOT"
 
 function get_last_version() {
     service=$1
