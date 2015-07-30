@@ -33,22 +33,29 @@ function get_last_version() {
     echo "$last"
 }
 
+function get_executable() {
+    bin="/opt/${service}-${version}/bin/${service}--run-service"
+	if [ -x "$bin" ]; then
+		echo "$bin"
+		return
+	fi
+
+    bin="/opt/${service}-${version}/bin/${service}--run-component"
+	if [ -x "$bin" ]; then
+		echo "$bin"
+		return
+	fi
+
+    echo "Cannot determine type of service $service" >&2
+    exit 1
+}
+
 service=$1
 id=$2
 last_version=$(get_last_version $1)
 version=${3:-$last_version}
 
-if [[ "$service" = *-services-* ]]; then
-    bin="/opt/${service}-${version}/bin/${service}--run-service"
-elif [[ "$service" = *-components-* ]]; then
-    bin="/opt/${service}-${version}/bin/${service}--run-component"
-else
-    bin="/opt/${service}-${version}/bin/${service}--run-component"
-    if [ ! -x "$bin" ]; then
-        echo "Cannot determine type of service $service" >&2
-        exit 1
-    fi
-fi
+bin=$(get_executable)
 
 if [ ! -x "$bin" ]; then
     echo "Cannot run service $service. $bin does not exist or is not executable" >&2
