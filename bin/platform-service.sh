@@ -8,7 +8,6 @@ if [ $# -eq 0 ]; then
     exit 1
 fi
 
-. _platform-env.sh
 . _platform-functions.sh
 
 id=$1

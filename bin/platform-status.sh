@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-. _platform-env.sh
 . _platform-functions.sh
 
 for pidfile in $HOME/var/run/*.pid; do
