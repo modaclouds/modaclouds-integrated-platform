@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
-LOGROOT=$HOME/var/log
-RUNROOT=$HOME/var/run
-
+. _common.sh
 
 set -e -E -u -o pipefail +o braceexpand || exit 1
 trap 'printf "[ee] failed: %s\n" "${BASH_COMMAND}" >&2' ERR || exit 1
@@ -35,16 +33,16 @@ function get_last_version() {
 
 function get_executable() {
     bin="/opt/${service}-${version}/bin/${service}--run-service"
-	if [ -x "$bin" ]; then
-		echo "$bin"
-		return
-	fi
+    if [ -x "$bin" ]; then
+        echo "$bin"
+        return
+    fi
 
     bin="/opt/${service}-${version}/bin/${service}--run-component"
-	if [ -x "$bin" ]; then
-		echo "$bin"
-		return
-	fi
+    if [ -x "$bin" ]; then
+        echo "$bin"
+        return
+    fi
 
     echo "Cannot determine type of service $service" >&2
     exit 1

@@ -1,4 +1,11 @@
-. $HOME/.modaclouds/platform-env.sh
+. _common.sh
+ENV="$HOME/.modaclouds/env.sh"
+if [ ! -e "$ENV" ]; then
+    echo "ERROR: $ENV file does not exist. Run platform-config program."
+    exit 1
+fi
+
+. "$ENV"
 
 ###
 #
@@ -8,6 +15,8 @@
 #
 
 function start_rabbitmq() {
+    #local FQDN=$(get_fqdn)
+    #local NODE_PUBLIC_IP=$(get_public_address)
     env \
         mosaic_node_fqdn=$FQDN \
         mosaic_node_ip=$NODE_PUBLIC_IP \
@@ -38,6 +47,8 @@ function start_t4c-dda() {
 
 function start_t4c-manager() {
     env \
+        MODACLOUDS_TOWER4CLOUDS_MANAGER_PUBLIC_ENDPOINT_IP=$MODACLOUDS_TOWER4CLOUDS_MANAGER_ENDPOINT_IP_PUBLIC \
+        MODACLOUDS_TOWER4CLOUDS_DATA_ANALYZER_PUBLIC_ENDPOINT_IP=$MODACLOUDS_TOWER4CLOUDS_DATA_ANALYZER_ENDPOINT_IP_PUBLIC \
         service-run.sh modaclouds-services-tower4clouds-manager t4c-manager
 }
 
