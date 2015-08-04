@@ -54,8 +54,9 @@ function start_t4c-manager() {
 
 function start_t4c-db() {
     env \
-        MODACLOUDS_FUSEKI_ENDPOINT_IP=$MODACLOUDS_FUSEKI_T4C_ENDPOINT_IP \
+        MODACLOUDS_FUSEKI_ENDPOINT_IP=$MODACLOUDS_FUSEKI_T4C_ENDPOINT_IP_HACK \
         MODACLOUDS_FUSEKI_ENDPOINT_PORT=$MODACLOUDS_FUSEKI_T4C_ENDPOINT_PORT \
+        MODACLOUDS_RABBITMQ_ENDPOINT_IP=$MODACLOUDS_RABBITMQ_ENDPOINT_IP_HACK \
         service-run.sh modaclouds-services-tower4clouds-rdf-history-db t4c-db
 }
 
