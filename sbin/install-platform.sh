@@ -11,7 +11,7 @@ fi
 /sbin/SuSEfirewall2 off
 
 NODE_PUBLIC_IP=$(/sbin/ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{print $1}')
-echo "$NODE_PUBLIC_IP\tnode.localdomain node" >> /etc/hosts
+echo -e "$NODE_PUBLIC_IP\tnode.localdomain node" >> /etc/hosts
 
 # 
 # Add mOS repositories
