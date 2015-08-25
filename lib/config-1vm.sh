@@ -15,5 +15,7 @@ node_a_instances=(
     sda-matlab
     fg-analyzer
     fg-local-db
+    lb-controller
+    lb-reasoner
 )
 

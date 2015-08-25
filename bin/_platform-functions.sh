@@ -92,6 +92,16 @@ function start_fg-analyzer() {
         service-run.sh modaclouds-services-fg-analyzer fg-analyzer
 }
 
+function start_lb-controller() {
+    env \
+        service-run.sh modaclouds-services-load-balancer-controller lb-controller
+}
+
+function start_lb-reasoner() {
+    env \
+        service-run.sh modaclouds-services-load-balancer-reasoner lb-reasoner
+}
+
 function start() {
     instance_id=$1
     start_${instance_id}
