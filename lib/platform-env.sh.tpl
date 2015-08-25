@@ -38,6 +38,7 @@ export MODACLOUDS_FUSEKI_T4C_ENDPOINT_PORT=3030
 # FUSEKI FG
 #
 export MODACLOUDS_FUSEKI_FG_ENDPOINT_IP=$(get_addr fuseki-fg)
+export MODACLOUDS_FUSEKI_FG_ENDPOINT_IP_HACK=$(get_public_addr fuseki-fg)
 export MODACLOUDS_FUSEKI_FG_ENDPOINT_PORT=3040
 
 #
@@ -86,3 +87,16 @@ export MODACLOUDS_MODELS_AT_RUNTIME_ENDPOINT_PORT_PUBLIC=9000
 export MODACLOUDS_SLACORE_ENDPOINT_IP=$(get_addr sla)
 export MODACLOUDS_SLACORE_ENDPOINT_PORT=9040
 
+#
+# FG LOCAL DB (doesn't provide endpoint)
+#
+# Vars above not needed when package updated
+export MODACLOUDS_FG_LOCAL_DB_COLLECTION="/v1/collections/FG/objects/"
+export MODACLOUDS_FG_LOCAL_DB_CONFIG_OBJECT="fg_metrics/data"
+
+#
+# FG ANALYZER (doesn't provide endpoint)
+#
+# Vars above not needed when package updated
+export MODACLOUDS_FG_ANALYZER_COLLECTION="/v1/collections/FG/objects/"
+export MODACLOUDS_FG_ANALYZER_CONFIG_OBJECT="config/data"

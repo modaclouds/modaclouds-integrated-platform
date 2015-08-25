@@ -13,5 +13,7 @@ node_a_instances=(
     mrt
     sla
     sda-matlab
+    fg-analyzer
+    fg-local-db
 )
 

@@ -80,6 +80,18 @@ function start_sda-matlab() {
         service-run.sh modaclouds-services-monitoring-sda-matlab sda-matlab
 }
 
+function start_fg-local-db() {
+    env \
+        MODACLOUDS_FUSEKI_T4C_ENDPOINT_IP=$MODACLOUDS_FUSEKI_T4C_ENDPOINT_IP_HACK \
+        MODACLOUDS_FUSEKI_FG_ENDPOINT_IP=$MODACLOUDS_FUSEKI_FG_ENDPOINT_IP_HACK \
+        service-run.sh modaclouds-services-fg-local-db fg-local-db
+}
+
+function start_fg-analyzer() {
+    env \
+        service-run.sh modaclouds-services-fg-analyzer fg-analyzer
+}
+
 function start() {
     instance_id=$1
     start_${instance_id}
