@@ -47,9 +47,9 @@ TODO
 
 ##Running the components
 
-For typing less, you can add the `modaclouds-runtime-platform` to the PATH:
+For typing less, you can add the `modaclouds-integrated-platform` to the PATH:
 
-    echo "PATH=\$PATH:$HOME/modaclouds-runtime-platform/bin" >> $HOME/.bashrc
+    echo "PATH=\$PATH:$HOME/modaclouds-integrated-platform/bin" >> $HOME/.bashrc
 
 These are the basic commands:
 
