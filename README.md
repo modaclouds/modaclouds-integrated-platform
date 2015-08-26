@@ -34,8 +34,8 @@ From admin:
     
 From the account you would like to use:
 
-    $ git clone https://github.com/rosogon/modaclouds-flexiant-platform
-    $ sudo modaclouds-flexiant-platform/sbin/install-platform.sh
+    $ git clone https://github.com/modaclouds/modaclouds-integrated-platform
+    $ sudo modaclouds-integrated-platform/sbin/install-platform.sh
 
 The last command adds mOS repo to the system, updates some system files, installs the components and configs any modaclouds service (e.g. create database in mysql for SLA Service)
 
