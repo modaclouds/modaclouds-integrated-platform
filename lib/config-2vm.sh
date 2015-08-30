@@ -1,15 +1,25 @@
 declare -A addresses=( 
-	["node_a"]=$NODE_A_IP
-	["node_b"]=$NODE_B_IP
+	["node1"]=$NODE_A_IP
+	["node2"]=$NODE_B_IP
 )
 
-node_a_instances=(
-	sla
-	fg
+node1_instances=(
+t4c-dda
+t4c-manager
+t4c-db
+mrt
+sla
+rabbitmq
+object-store
+fuseki-t4c
+fuseki-fg
 )
 
-node_b_instances=(
-	t4c
-	rabbitmq
+node2_instances=(
+sda-matlab
+fg-analyzer
+fg-local-db
+lb-controller
+lb-reasoner
 )
 

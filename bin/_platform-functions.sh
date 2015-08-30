@@ -15,8 +15,6 @@ fi
 #
 
 function start_rabbitmq() {
-    #local FQDN=$(get_fqdn)
-    #local NODE_PUBLIC_IP=$(get_public_address)
     env \
         mosaic_node_fqdn=$FQDN \
         mosaic_node_ip=$NODE_PUBLIC_IP \

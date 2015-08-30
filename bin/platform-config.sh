@@ -1,18 +1,22 @@
 #!/usr/bin/env bash
 
-#rm ~/.modaclouds/env.sh && touch ~/.modaclouds/env.sh
-
 . _common.sh
 
 
-if [ $# -lt 2 ]; then
-    echo "Usage: $0 <configfile> <thisnode>"
-    echo "    e.g.: $0 lib/config-2vm.sh node_b"
+if [ $# -lt 1 ]; then
+    echo "Usage: $0 <configfile> [<thisnode>]"
+    echo "    e.g.: $0 lib/config-2vm.sh node2"
+    echo "          $0 lib/config-2vm.sh"
+    echo "          $0 lib/config-1vm.sh"
     exit 1
 fi
 
 configfile="$1"
 thisnode="$2"
+if [ "$thisnode" == "" ]; then
+    thisnode=$(</etc/HOSTNAME)
+    echo "Using $thisnode as thisnode" >&2
+fi
 outfile="$HOME/.modaclouds/env.sh"
 
 if ! [ -e "$configfile" ]; then
@@ -40,7 +44,7 @@ function check_config_file() {
             fi
             exit 1
         fi
-        ping -n 1 "$address" >/dev/null 2>&1
+        ping -c 1 "$address" >/dev/null 2>&1
         if [ $? -ne 0 ]; then
             echo "Warning: $node with address $address could not be pinged"
         fi
@@ -113,5 +117,8 @@ do
         echo "$line"
     fi
 done < "$template" > "$outfile"
+
+outconfigfile="$HOME/.modaclouds/config.sh"
+cp "$configfile" "$outconfigfile" 2>/dev/null && echo "Config file has been copied to $outconfigfile" >&2
 
 echo "Output file is $outfile" >&2
