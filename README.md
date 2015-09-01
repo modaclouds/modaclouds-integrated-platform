@@ -101,3 +101,9 @@ Check the content of `bin/_common.sh` file. It should have VERSION variable grea
     # hostname -F /etc/HOSTNAME
 
 You also must have an entry in /etc/hosts for that hostname associated to the IP of the network interface. Do not use localhost.
+
+## License ##
+
+Licensed under the [Apache License, Version 2.0][1]
+
+[1]: http://www.apache.org/licenses/LICENSE-2.0
