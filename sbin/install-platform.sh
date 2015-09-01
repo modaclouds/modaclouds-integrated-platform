@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -e -E -u -o pipefail -o noglob +o braceexpand || exit 1
+set -e -E -u -o pipefail +o braceexpand || exit 1
 trap 'printf "[ee] failed: %s\n" "${BASH_COMMAND}" >&2' ERR || exit 1
 
 if [ "$(id -u)" != "0" ]; then
