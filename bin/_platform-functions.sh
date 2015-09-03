@@ -100,6 +100,11 @@ function start_lb-reasoner() {
         service-run.sh modaclouds-services-load-balancer-reasoner lb-reasoner
 }
 
+function start_metric-explorer() {
+    env \
+        service-run.sh modaclouds-services-metric-explorer metric-explorer
+}
+
 function start() {
     instance_id=$1
     start_${instance_id}

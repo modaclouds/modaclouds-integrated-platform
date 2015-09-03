@@ -17,5 +17,6 @@ node1_instances=(
     fg-local-db
     lb-controller
     lb-reasoner
+    metric-explorer
 )
 

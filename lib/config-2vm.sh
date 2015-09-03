@@ -21,5 +21,6 @@ fg-analyzer
 fg-local-db
 lb-controller
 lb-reasoner
+metric-explorer
 )
 
