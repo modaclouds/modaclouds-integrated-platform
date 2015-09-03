@@ -86,22 +86,26 @@ The logs are stored in `$HOME/var/log`. There is one log file per service.
 
 ## Updating from v1.0 to v2.0
 
+You may have a hostname not suitable for v2 that was not a problem in v1 (remember: no '\_' or '-' are allowed. To modify the hostname, follow these steps:
+
+    $ sudo su
+    # HOSTNAME=node1
+    # echo $HOSTNAME > /etc/HOSTNAME
+    # hostname -F /etc/HOSTNAME
+
+The easiest way to start is using `node1` as hostname. This way, there is no need to change the configuration file.
+
+You also must have an entry in /etc/hosts for that hostname associated to the IP of the network interface. Do not use localhost. The line to add/modify should be like:
+
+   192.168.1.1 atosvm3.localdomain atosvm3
+
 You only have to update your code and run the configuration script using the config file of your needs. In the following, we will use the configuration file using a single VM:
 
     cd ~/modaclouds-integrated-platform
     git pull
     platform-config ~/modaclouds-integrated-platform ~/modaclouds-integrated-platform/lib/config1-vm.sh
 
-Check the content of `bin/_common.sh` file. It should have VERSION variable greater or equal than 2.0. See the Configuration section for more details about this script.
-
-** IMPORTANT ** : You may have a hostname not suitable for v2 that was not a problem in v1 (remember: no '\_' or '-' are allowed. To modify the hostname, follow these steps:
-
-    $ sudo su
-    # HOSTNAME=<your-hostname>
-    # echo $HOSTNAME > /etc/HOSTNAME
-    # hostname -F /etc/HOSTNAME
-
-You also must have an entry in /etc/hosts for that hostname associated to the IP of the network interface. Do not use localhost.
+Check the content of `bin/_common.sh` file. It should have VERSION variable greater or equal than 2.0. See the Configuration section for more details about the last step.
 
 ## License ##
 
