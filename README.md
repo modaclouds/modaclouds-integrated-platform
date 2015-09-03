@@ -97,7 +97,7 @@ The easiest way to start is using `node1` as hostname. This way, there is no nee
 
 You also must have an entry in /etc/hosts for that hostname associated to the IP of the network interface. Do not use localhost. The line to add/modify should be like:
 
-   192.168.1.1 atosvm3.localdomain atosvm3
+    192.168.1.1 node1.localdomain node1
 
 You only have to update your code and run the configuration script using the config file of your needs. In the following, we will use the configuration file using a single VM:
 
