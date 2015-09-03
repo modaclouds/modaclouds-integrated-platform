@@ -1,3 +1,4 @@
+VERSION=2.0
 LOGROOT=$HOME/var/log
 RUNROOT=$HOME/var/run
 

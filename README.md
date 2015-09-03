@@ -42,7 +42,8 @@ The last command adds mOS repo to the system, updates some system files, install
 
 **IMPORTANT**:
 
-* It modifies /etc/HOSTNAME and and a line in /etc/hosts. Please check the values are right.
+* It modifies /etc/HOSTNAME and and a line in /etc/hosts. Please check the values are right, especially if
+  you had to run the script several times.
 * Avoid hostnames with underscore ('\_') or dash ('-') characters.
 
 
