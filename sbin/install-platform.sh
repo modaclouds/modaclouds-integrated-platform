@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -e -E -u -o pipefail -o noclobber -o noglob +o braceexpand || exit 1
+set -e -E -u -o pipefail +o braceexpand || exit 1
 trap 'printf "[ee] failed: %s\n" "${BASH_COMMAND}" >&2' ERR || exit 1
 
 if [ "$(id -u)" != "0" ]; then
@@ -8,10 +8,23 @@ if [ "$(id -u)" != "0" ]; then
     exit 1
 fi
 
+HOSTNAME=$(</etc/HOSTNAME)
+if [ "$#" -lt 1 ]; then
+    echo "Usage: $0 <hostname>"
+    echo "  e.g. $0 $HOSTNAME"
+    exit 1
+fi
+
+if [ $# -gt 0 ]; then
+    HOSTNAME=$1
+    echo "$HOSTNAME" > /etc/HOSTNAME
+    hostname -F /etc/HOSTNAME
+fi
+
 /sbin/SuSEfirewall2 off
 
 NODE_PUBLIC_IP=$(/sbin/ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{print $1}')
-echo "$NODE_PUBLIC_IP\tnode.localdomain node" >> /etc/hosts
+echo -e "$NODE_PUBLIC_IP\t$HOSTNAME.localdomain $HOSTNAME" >> /etc/hosts
 
 # 
 # Add mOS repositories

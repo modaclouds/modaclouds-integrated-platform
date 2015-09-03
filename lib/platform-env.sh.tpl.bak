@@ -1,0 +1,8 @@
+instances_ids=(
+	$instances
+)
+
+export SLA_CORE_ENDPOINT_IP=$(get_address sla)
+export FG_ENDPOINT_IP=$(get_address fg)
+export T4C_ENDPOINT_IP=$(get_address t4c)
+export RABBITMQ_ENDPOINT_IP=$(get_address rabbitmq)
