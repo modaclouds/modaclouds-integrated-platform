@@ -40,14 +40,14 @@ function start_object-store() {
 
 function start_t4c-dda() {
     env \
-        service-run.sh modaclouds-services-tower4clouds-data-analyzer t4c-dda
+        service-run.sh modaclouds-services-monitoring-dda t4c-dda
 }
 
 function start_t4c-manager() {
     env \
         MODACLOUDS_TOWER4CLOUDS_MANAGER_PUBLIC_ENDPOINT_IP=$MODACLOUDS_TOWER4CLOUDS_MANAGER_ENDPOINT_IP_PUBLIC \
         MODACLOUDS_TOWER4CLOUDS_DATA_ANALYZER_PUBLIC_ENDPOINT_IP=$MODACLOUDS_TOWER4CLOUDS_DATA_ANALYZER_ENDPOINT_IP_PUBLIC \
-        service-run.sh modaclouds-services-tower4clouds-manager t4c-manager
+        service-run.sh modaclouds-services-monitoring-manager t4c-manager
 }
 
 function start_t4c-db() {
@@ -55,7 +55,7 @@ function start_t4c-db() {
         MODACLOUDS_FUSEKI_ENDPOINT_IP=$MODACLOUDS_FUSEKI_T4C_ENDPOINT_IP_HACK \
         MODACLOUDS_FUSEKI_ENDPOINT_PORT=$MODACLOUDS_FUSEKI_T4C_ENDPOINT_PORT \
         MODACLOUDS_RABBITMQ_ENDPOINT_IP=$MODACLOUDS_RABBITMQ_ENDPOINT_IP_HACK \
-        service-run.sh modaclouds-services-tower4clouds-rdf-history-db t4c-db
+        service-run.sh modaclouds-services-monitoring-history-db t4c-db
 }
 
 function start_lb-controller() {
