@@ -1,4 +1,5 @@
 VERSION=2.0
+PACKAGE=0.7.0.17
 LOGROOT=$HOME/var/log
 RUNROOT=$HOME/var/run
 
