@@ -5,8 +5,7 @@ declare -A addresses=(
 node1_instances=(
     rabbitmq
     object-store
-    fuseki-t4c
-    fuseki-fg
+    fuseki
     t4c-dda
     t4c-manager
     t4c-db

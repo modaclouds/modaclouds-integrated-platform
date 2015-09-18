@@ -11,8 +11,7 @@ mrt
 sla
 rabbitmq
 object-store
-fuseki-t4c
-fuseki-fg
+fuseki
 )
 
 node2_instances=(

@@ -21,6 +21,11 @@ function start_rabbitmq() {
         service-run.sh mosaic-components-rabbitmq rabbitmq
 }
 
+function start_fuseki() {
+    env \
+        service-run.sh modaclouds-services-fuseki fuseki
+}
+
 function start_fuseki-t4c() {
     env \
         MODACLOUDS_FUSEKI_ENDPOINT_PORT=$MODACLOUDS_FUSEKI_T4C_ENDPOINT_PORT \
@@ -52,8 +57,8 @@ function start_t4c-manager() {
 
 function start_t4c-db() {
     env \
-        MODACLOUDS_FUSEKI_ENDPOINT_IP=$MODACLOUDS_FUSEKI_T4C_ENDPOINT_IP_HACK \
-        MODACLOUDS_FUSEKI_ENDPOINT_PORT=$MODACLOUDS_FUSEKI_T4C_ENDPOINT_PORT \
+        MODACLOUDS_FUSEKI_ENDPOINT_IP=$MODACLOUDS_FUSEKI_ENDPOINT_IP_HACK \
+        MODACLOUDS_FUSEKI_ENDPOINT_PORT=$MODACLOUDS_FUSEKI_ENDPOINT_PORT \
         MODACLOUDS_RABBITMQ_ENDPOINT_IP=$MODACLOUDS_RABBITMQ_ENDPOINT_IP_HACK \
         service-run.sh modaclouds-services-monitoring-history-db t4c-db
 }
@@ -80,8 +85,7 @@ function start_sda-matlab() {
 
 function start_fg-local-db() {
     env \
-        MODACLOUDS_FUSEKI_T4C_ENDPOINT_IP=$MODACLOUDS_FUSEKI_T4C_ENDPOINT_IP_HACK \
-        MODACLOUDS_FUSEKI_FG_ENDPOINT_IP=$MODACLOUDS_FUSEKI_FG_ENDPOINT_IP_HACK \
+        MODACLOUDS_FUSEKI_ENDPOINT_IP=$MODACLOUDS_FUSEKI_ENDPOINT_IP_HACK \
         service-run.sh modaclouds-services-fg-local-db fg-local-db
 }
 

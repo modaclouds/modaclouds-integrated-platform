@@ -28,18 +28,11 @@ export MODACLOUDS_RABBITMQ_ENDPOINT_IP_HACK=$(get_public_addr rabbitmq)
 export MODACLOUDS_RABBITMQ_ENDPOINT_PORT=21688
 
 #
-# FUSEKI T4C
+# FUSEKI (one instance to rule them all)
 #
-export MODACLOUDS_FUSEKI_T4C_ENDPOINT_IP=$(get_addr fuseki-t4c)
-export MODACLOUDS_FUSEKI_T4C_ENDPOINT_IP_HACK=$(get_public_addr fuseki-t4c)
-export MODACLOUDS_FUSEKI_T4C_ENDPOINT_PORT=3030
-
-#
-# FUSEKI FG
-#
-export MODACLOUDS_FUSEKI_FG_ENDPOINT_IP=$(get_addr fuseki-fg)
-export MODACLOUDS_FUSEKI_FG_ENDPOINT_IP_HACK=$(get_public_addr fuseki-fg)
-export MODACLOUDS_FUSEKI_FG_ENDPOINT_PORT=3040
+export MODACLOUDS_FUSEKI_ENDPOINT_IP=$(get_addr fuseki)
+export MODACLOUDS_FUSEKI_ENDPOINT_IP_HACK=$(get_public_addr fuseki)
+export MODACLOUDS_FUSEKI_ENDPOINT_PORT=3030
 
 #
 # OBJECT STORE
