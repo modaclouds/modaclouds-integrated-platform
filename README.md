@@ -9,36 +9,38 @@ provisioned nodes.
 4. Run
 
 
+## Quick Start Guide ##
+
+(Detailed Guide below)
+
+    sudo zypper install git
+    git clone https://github.com/modaclouds/modaclouds-integrated-platform
+    sudo modaclouds-integrated-platform/sbin/install-platform.sh node1
+
+    echo "PATH=\$PATH:$HOME/modaclouds-integrated-platform/bin" >> $HOME/.bashrc
+    . $HOME/.bashrc
+
+    platform-config.sh $HOME/modaclouds-integrated-platform/lib/config1-vm.sh node1
+    platform-start.sh
+
 ## Installation
 
 You have to follow this installation step for each VM.
 
-These steps are suitable for any OpenSuse13.1 image.
+You have to choose a hostname avoiding underscores ('\_') and dash ('-') characters.
+The easiest way to start is using `node1` as hostname. 
+This way, there is no need to change the configuration file.
 
-There is such an image ready in Flexiant, called OpenSuse13.1_v0, shared with MODAClouds group. This image is the same image in OpenSuse repositories, with some configuration:
-
-* admin and root password are the same. Send an email to info@modaclouds.eu to obtain it.
-* admin can use sudo without password
-* there is a developer account if you want to use it (if not, skip steps related to developer). To switch user to developer: `sudo su - developer`
-
-You are advised to:
-
-* change root&admin&developer password
-* upload your public keys
-  * `ssh-copy-id admin@IP`
-  * `ssh-copy-id developer@IP`
-* anything else?
-
-From admin:
+The following steps are suitable for any OpenSuse13.1 image (change node1 for your chosen hostname).
 
     $ sudo zypper install git
-    
-From the account you would like to use:
-
     $ git clone https://github.com/modaclouds/modaclouds-integrated-platform
-    $ sudo modaclouds-integrated-platform/sbin/install-platform.sh <vm-hostname>
+    $ sudo modaclouds-integrated-platform/sbin/install-platform.sh node1
 
-The last command adds mOS repo to the system, updates some system files, installs the components and configs any modaclouds service (e.g. create database in mysql for SLA Service). 
+    $ echo "PATH=\$PATH:$HOME/modaclouds-integrated-platform/bin" >> $HOME/.bashrc
+    $ . $HOME/.bashrc
+
+The install-platform command adds mOS repo to the system, updates some system files, installs the components and configs any modaclouds service (e.g. create database in mysql for SLA Service). 
 
 **IMPORTANT**:
 
@@ -53,27 +55,24 @@ After the installation, a little configuration step is needed in each VM to know
 of the VMs and what services will run in each one. This script must be run every time you want to 
 redistribute the services among VMs, or a node address changes.
 
-    $ platform-config.sh <configfile>
+    $ platform-config.sh <configfile> <nodenumber>
 
-You have several configfiles in ~/modaclouds/lib/config-\* files. Select the one that better fits the 
+You have several configfiles in ~/modaclouds-integrated-platform/lib/config-\* files. Select the one that better fits the 
 distribution you need and modify it:
-* In _addresses_ var, enter a line for each node, with the *hostname* and its address.
-* For each node in _addresses_ var, there must be an _instances_ var prefixed with the hostname.
+
+* In _addresses_ var, change the address for the node.
+* For each node in _addresses_ var, there must be an _instances_ var.
 
 The file you use will be copied to ~/.modaclouds/config.sh,
 so the next time you need to reconfigure, you can simply use:
 
-    $ platform-config.sh ~/.modaclouds/config.sh
-
-**NOTE**: The script knows the current node by reading the contents of /etc/HOSTNAME, so it is important
-to match the names in the config file with the hostname.
+    $ platform-config.sh ~/.modaclouds/config.sh <nodenumber>
 
 
 ##Running the components
 
 For typing less, you can add the `modaclouds-integrated-platform` to the PATH:
 
-    echo "PATH=\$PATH:$HOME/modaclouds-integrated-platform/bin" >> $HOME/.bashrc
 
 These are the basic commands:
 

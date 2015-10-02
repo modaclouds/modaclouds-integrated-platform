@@ -1,3 +1,9 @@
+#
+# Set the values of each of the nodes before running platform-config.sh:
+#
+# export NODE_A_IP=...
+# export NODE_B_IP=...
+#
 declare -A addresses=( 
 	["node1"]=$NODE_A_IP
 	["node2"]=$NODE_B_IP

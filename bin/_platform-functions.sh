@@ -1,5 +1,4 @@
 . _common.sh
-ENV="$HOME/.modaclouds/env.sh"
 if [ ! -e "$ENV" ]; then
     echo "ERROR: $ENV file does not exist. Run platform-config program."
     exit 1
