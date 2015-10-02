@@ -81,6 +81,19 @@ export MODACLOUDS_SLACORE_ENDPOINT_IP=$(get_addr sla)
 export MODACLOUDS_SLACORE_ENDPOINT_PORT=9040
 
 #
+# SDA MATLAB
+#
+export MODACLOUDS_MONITORING_SDA_MATLAB_ENDPOINT_IP=$(get_addr sda-matlab)
+export MODACLOUDS_MONITORING_SDA_MATLAB_ENDPOINT_PORT=8176
+
+
+#
+# SDA WEKA
+#
+export MODACLOUDS_MONITORING_SDA_WEKA_ENDPOINT_IP=$(get_addr sda-matlab)
+export MODACLOUDS_MONITORING_SDA_WEKA_ENDPOINT_PORT=8177
+
+#
 # FG LOCAL DB (doesn't provide endpoint)
 #
 # Vars above not needed when package updated
