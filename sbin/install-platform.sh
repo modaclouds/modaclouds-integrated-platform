@@ -34,7 +34,7 @@ bash <(curl -Ls http://ftp.info.uvt.ro/mos/tools/fixes/opensuse-13.1/add_mos_rep
 zypper refresh
 
 zypper --non-interactive --no-refresh --no-gpg-checks --gpg-auto-import-keys install \
-    bind-utils
+    bind-utils \
     modaclouds-platform-core \
     modaclouds-platform-services \
     modaclouds-platform-tools
