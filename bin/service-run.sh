@@ -83,7 +83,9 @@ env \
 pid=$!
 echo $pid > $pidfile
 
-echo "Running $id [$service-$version] "
+_LISTEN=""
+[ -n "${SERVICE_ADDRESS:-}" ] && _LISTEN="on port ${SERVICE_ADDRESS}"
+echo "Running $id [$service-$version] $_LISTEN"
 echo "  output is in $outfile"
 echo "  pid=$pid is in $pidfile"
 

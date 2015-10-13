@@ -3,20 +3,15 @@
 . _common.sh
 
 
-if [ $# -lt 1 ]; then
-    echo "Usage: $0 <configfile> [<thisnode>]"
+if [ $# -lt 2 ]; then
+    echo "Usage: $0 <configfile> <node[1|2|...]>"
     echo "    e.g.: $0 lib/config-2vm.sh node2"
-    echo "          $0 lib/config-2vm.sh"
-    echo "          $0 lib/config-1vm.sh"
+    echo "          $0 lib/config-1vm.sh node1"
     exit 1
 fi
 
 configfile="$1"
 thisnode="$2"
-if [ "$thisnode" == "" ]; then
-    thisnode=$(</etc/HOSTNAME)
-    echo "Using $thisnode as thisnode" >&2
-fi
 outfile="$HOME/.modaclouds/env.sh"
 
 if ! [ -e "$configfile" ]; then
@@ -108,7 +103,7 @@ do
     if [[ "$line" =~ ^#.*$ ]]; then
         echo "$line"
     elif [[ "$line" =~ \$\(.*\) ]]; then
-        eval echo "$line"
+        echo "$line"
     elif [[ "$line" =~ .*\$instances.* ]]; then
         arr=${thisnode}_instances[@]
         instances="${!arr}"
