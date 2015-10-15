@@ -1,4 +1,4 @@
-VERSION=2.1
+VERSION=2.2
 PACKAGE=0.7.0.18
 LOGROOT=$HOME/var/log
 RUNROOT=$HOME/var/run
@@ -10,6 +10,10 @@ CNF=$HOME/.modaclouds/config.sh
 function get_public_address() {
     # http://unix.stackexchange.com/questions/22615/how-can-i-get-my-external-ip-address-in-bash
     dig +short myip.opendns.com @resolver1.opendns.com
+}
+
+function get_internal_address() {
+    /sbin/ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{print $1}'
 }
 
 function get_addr() {
@@ -40,7 +44,7 @@ function get_line_etc_hosts() {
 
 function get_fqdn() {
 # Get fqdn of of parameter (i.e., second field of /etc/hosts file)
-    local addr=$(get_public_address)
+    local addr=$(get_internal_address)
     local hostline=$(get_line_etc_hosts "$addr")
 
     if [ -z "$hostline" ]; then
