@@ -5,13 +5,13 @@ The MODAClouds integrated platform is composed of:
 * [Design time environment](#design-time-platform)
 * [Runtime environment](#runtime-platform)
 
-# Design Time Platform
+# Design Time Platform - Creator 4Clouds
 
 You can download a Docker with all the needed components ready to run:
 
 https://hub.docker.com/r/deibpolimi/modaclouds-designtime/
 
-# Runtime Platform
+# Runtime Platform - Energizer 4Clouds
 
 `modaclouds-integrated-platform` helps you to have a running MODAClouds Runtime Platform in already 
 provisioned nodes.
