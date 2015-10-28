@@ -2,8 +2,8 @@
 
 The MODAClouds integrated platform is composed of:
 
-* Design time environment
-* Runtime environment
+* [Design time environment](#design-time-platform)
+* [Runtime environment](#runtime-platform)
 
 # Design Time Platform
 
