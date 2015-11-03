@@ -84,8 +84,8 @@ pid=$!
 echo $pid > $pidfile
 
 _LISTEN=""
-[ -n "${SERVICE_ADDRESS:-}" ] && _LISTEN="on port ${SERVICE_ADDRESS}"
-echo "Running $id [$service-$version] $_LISTEN"
+[ -n "${SERVICE_ADDRESS:-}" ] && _LISTEN="External Address: $(get_public_address):${SERVICE_ADDRESS}"
+echo "Running $id [$service-$version]. $_LISTEN"
 echo "  output is in $outfile"
 echo "  pid=$pid is in $pidfile"
 

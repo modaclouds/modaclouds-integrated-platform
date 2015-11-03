@@ -20,7 +20,7 @@ provisioned nodes.
     echo "PATH=\$PATH:$HOME/modaclouds-integrated-platform/bin" >> $HOME/.bashrc
     . $HOME/.bashrc
 
-    platform-config.sh $HOME/modaclouds-integrated-platform/lib/config1-vm.sh node1
+    platform-config.sh $HOME/modaclouds-integrated-platform/lib/config-1vm.sh node1
     platform-start.sh
 
 ## Installation
@@ -55,7 +55,7 @@ After the installation, a little configuration step is needed in each VM to know
 of the VMs and what services will run in each one. This script must be run every time you want to 
 redistribute the services among VMs, or a node address changes.
 
-    $ platform-config.sh <configfile> <nodenumber>
+    $ platform-config.sh <configfile> <nodeid>
 
 You have several configfiles in ~/modaclouds-integrated-platform/lib/config-\* files. Select the one that better fits the 
 distribution you need and modify it:
@@ -66,7 +66,7 @@ distribution you need and modify it:
 The file you use will be copied to ~/.modaclouds/config.sh,
 so the next time you need to reconfigure, you can simply use:
 
-    $ platform-config.sh ~/.modaclouds/config.sh <nodenumber>
+    $ platform-config.sh ~/.modaclouds/config.sh <nodeid>
 
 
 ##Running the components

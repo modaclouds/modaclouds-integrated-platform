@@ -7,6 +7,7 @@ instance_ids=(
 )
 
 export FQDN=$(get_fqdn)
+export NODE_INTERNAL_IP=$(get_internal_address)
 export NODE_PUBLIC_IP=$(get_public_address)
 
 ###

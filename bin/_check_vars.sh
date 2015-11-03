@@ -1,4 +1,4 @@
 . _common.sh
 . "$ENV"
 
-env | grep "^MODACLOUDS\|MOSAIC\|FQDN" | sort
+env | grep "^MODACLOUDS\|MOSAIC\|FQDN\|NODE" | sort
