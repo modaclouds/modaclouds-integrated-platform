@@ -32,7 +32,7 @@ function get_addr() {
             fi
         done
     done
-    echo "Warning: $1 not found" >&2
+    #echo "Warning: $1 not found" >&2
     exit 1
 }
 
