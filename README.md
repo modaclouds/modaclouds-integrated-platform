@@ -2,14 +2,14 @@
 
 The MODAClouds integrated platform is composed of:
 
-* [Design time environment](#design-time-platform)
-* [Runtime environment](#runtime-platform)
+* [Design time environment - Creator 4Clouds](#design-time-platform)
+* [Runtime environment - Energizer 4Clouds](#runtime-platform)
 
-# Design Time Platform - Creator 4Clouds
+# Design Time Platform
 
 You can download a [https://hub.docker.com/r/deibpolimi/modaclouds-designtime/](Docker image of Creator 4Clouds) with all the needed components ready to run. Follow the steps in the link to install docker and run the Docker image. When the image is running it opens a Remote Desktop server. You can connect to it (using Remote Desktop Connection in Windows, for example) using the `modaclouds` password. Now you are in.
 
-# Runtime Platform - Energizer 4Clouds
+# Runtime Platform
 
 `modaclouds-integrated-platform` helps you to have a running MODAClouds Runtime Platform in already 
 provisioned nodes.
