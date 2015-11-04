@@ -3,7 +3,7 @@
 The MODAClouds integrated platform is composed of:
 
 * [Design time environment - Creator 4Clouds](#design-time-platform)
-* [Runtime environment - Energizer 4Clouds](#runtime-platform--emergizer-4clouds)
+* [Runtime environment - Energizer 4Clouds](#runtime-platform)
 
 # Design Time Platform
 
